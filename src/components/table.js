@@ -32,9 +32,10 @@ let Table = ({ rows, filter, setFilter, deleteRow, editRow }) => (
 )
 
 const mapStateToProps = ({ rows, filter }) => {
-  const byCheckNo = (a, b) => a.checkNo > b.checkNo ?
-    1 :
-    a.checkNo < b.checkNo ? -1 : 0
+  const byCheckNo = (a, b) =>
+    (a.checkNo > b.checkNo ?
+      1 :
+      a.checkNo < b.checkNo ? -1 : 0) * 1
 
   return {
     filter,

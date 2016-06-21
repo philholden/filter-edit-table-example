@@ -27,7 +27,7 @@ export default class Row extends Component {
         onDelete: () => {
           console.log(this.props)
           this.props.deleteRow(this.props.id)
-        }
+        },
       }} />
     }
   }
