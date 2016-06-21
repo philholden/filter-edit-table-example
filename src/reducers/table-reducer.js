@@ -5,20 +5,13 @@ export default (state={}, action) => {
     case 'ADD_ROW_SUCCEEDED':
       return {
         ...state,
-        [action.id]: action.row,
+        [action.row.id]: action.row,
       }
     case 'INIT_ROWS_SUCCEEDED':
-      console.log(action)
       return action.rows
-      // return action.rows.reduce(
-      //   (acc, row) => {
-      //     acc[row.id] = row
-      //     return acc
-      //   }, {}
-      // )
     case 'DELETE_ROW_SUCCEEDED': {
       const nextState = { ...state }
-      delete state[action.id]
+      delete nextState[action.id]
       return nextState
     }
     default:

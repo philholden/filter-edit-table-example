@@ -6,11 +6,12 @@ function *editRow() {
   yield* takeEvery('EDIT_ROW', callEditRow)
 }
 
-function *callEditRow({ id, row }) {
+function *callEditRow({ row }) {
   try {
-    yield call(api.editRow, id, row)
-    yield put({ type: 'EDIT_ROW_SUCCEEDED', id, row })
+    yield call(api.editRow, row)
+    yield put({ type: 'EDIT_ROW_SUCCEEDED', row })
   } catch (e) {
+    console.log(e)
     yield put({ type: 'EDIT_ROW_FAILED' })
   }
 }
@@ -24,6 +25,7 @@ function *callDeleteRow({ id }) {
     yield call(api.deleteRow, id)
     yield put({ type: 'DELETE_ROW_SUCCEEDED', id })
   } catch (e) {
+
     yield put({ type: 'DELETE_ROW_FAILED' })
   }
 }

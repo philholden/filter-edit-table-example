@@ -48,7 +48,7 @@ export const deleteRow = id => new Promise((resolve, reject) => {
 export const editRow = row => new Promise((resolve, reject) => {
   if (true) {
     row[row.id] = row
-    resolve()
+    resolve(true)
   }
   else {
     reject(Error('It broke'))

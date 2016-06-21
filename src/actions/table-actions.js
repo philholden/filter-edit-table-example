@@ -1,13 +1,11 @@
 
-export const addRow = (id, row) => ({
+export const addRow = (row) => ({
   type: 'ADD_ROW',
-  id,
   row,
 })
 
-export const editRow = (id, row) => ({
+export const editRow = (row) => ({
   type: 'EDIT_ROW',
-  id,
   row,
 })
 

@@ -1,51 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
+import EditRow from './edit-row'
+import ViewRow from './view-row'
 
-const Row = ({
-  id,
-  checkNo,
-  payee,
-  amount,
-  isVoid,
-  status,
-  onEdit,
-  onDelete,
-}) => {
-  const onChange = ({ target: { value } }) => {
-    if (value === 'edit') onEdit(id)
-    if (value === 'delete') onDelete(id)
+export default class Row extends Component {
+
+  constructor(props, ctx) {
+    super(props, ctx)
+    this.setEdit = this.setEdit.bind(this)
+    this.state = { isEdit: false }
   }
 
-  return (
-    <div style={styles.row}>
-      <div style={styles.cell}>{checkNo}</div>
-      <div style={styles.cell}>{payee}</div>
-      <div style={styles.cell}>{amount}</div>
-      <div style={styles.cell}>{isVoid ? 'Void' : ''}</div>
-      <div style={styles.cell}>{status}</div>
-      <div style={styles.cell}>
-        <select onChange={onChange}>
-          <option>Options</option>
-          <option value="edit">Edit</option>
-          <option value="delete">Delete</option>
-        </select>
-      </div>
-    </div>
-  )
-}
+  setEdit(isEdit) {
+    this.setState({ isEdit })
+  }
 
-const styles = {
-  row: {
-    display: 'flex',
-    flexBasis: 0,
-    borderBottom: '1px solid #ccc',
-    height: 40,
-    alignItems: 'center',
-  },
-  cell: {
-    paddingLeft: 10,
-    paddingRight: 10,
-    flex: 1,
-  },
+  render() {
+    if (this.state.isEdit) {
+      return <EditRow { ...{
+        ...this.props,
+        onView: () => this.setEdit(false),
+      }} />
+    } else {
+      return <ViewRow { ...{
+        ...this.props,
+        onEdit: () => this.setEdit(true),
+        onDelete: () => {
+          console.log(this.props)
+          this.props.deleteRow(this.props.id)
+        }
+      }} />
+    }
+  }
 }
-
-export default Row
