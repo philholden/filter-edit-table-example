@@ -29,19 +29,40 @@ const Row = ({
   return (
     <form style={styles.row} onSubmit={onSubmit}>
       <div style={styles.cell}>
-        <input style={styles.input} defaultValue={checkNo} name="checkNo" />
+        <input
+          style={styles.input}
+          defaultValue={checkNo}
+          name="checkNo"
+        />
       </div>
       <div style={styles.cell}>
-        <input style={styles.input} defaultValue={payee} name="payee"/>
+        <input
+          style={styles.input}
+          defaultValue={payee}
+          name="payee"
+        />
       </div>
       <div style={styles.cell}>
-        <input style={styles.input} defaultValue={amount} name="amount" />
+        <input
+          style={styles.input}
+          defaultValue={amount}
+          name="amount"
+        />
       </div>
       <div style={styles.cell}>
-        <input style={styles.input} type="checkbox" defaultChecked={isVoid} name="isVoid" />
+        <input
+          style={styles.input}
+          type="checkbox"
+          defaultChecked={isVoid}
+          name="isVoid"
+        />
       </div>
       <div style={styles.cell}>
-        <input style={styles.input} defaultValue={status} name="status" />
+        <input
+          style={styles.input}
+          defaultValue={status}
+          name="status"
+        />
       </div>
       <div style={styles.cell}>
         <button>Save</button>
